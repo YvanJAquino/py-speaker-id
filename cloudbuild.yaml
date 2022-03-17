@@ -40,7 +40,7 @@ steps:
       --set-env-vars DB_NAME=${_DB_NAME} \
       --set-env-vars DB_CNST=postgresql+psycopg2://${_DB_USER}:${_DB_PASS}@${_DB_HOST}:${_DB_PORT}/${_DB_NAME} \
       --timeout 15m \
-      --region {_REGION} \
+      --region ${_REGION} \
       --no-cpu-throttling \
       --vpc-connector ${_VPC_CONNECTOR} \
       --platform managed \
@@ -49,7 +49,7 @@ steps:
       --allow-unauthenticated
 
 substitutions:
-  _SERVICE: speaker-id-py
+  _SERVICE: py-speaker-id
   _VPC_CONNECTOR: svpca-vpc-sb-dialogflow
   _DB_HOST: 10.92.64.2
   _DB_PORT: 5432
