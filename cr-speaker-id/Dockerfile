@@ -1,8 +1,8 @@
-FROM    python:3.9-slim-buster AS base
+FROM    python:3.9-buster AS base
 ENV     PYTHONUNBUFFERED True
 WORKDIR /src
 RUN     apt update && \
-        pip install pipenv libpq-dev
+        pip install pipenv
 
 FROM    base
 COPY    *.py Pipfile* ./

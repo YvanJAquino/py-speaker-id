@@ -52,7 +52,7 @@ substitutions:
   _SERVICE: py-speaker-id
   _VPC_CONNECTOR: svpca-vpc-sb-dialogflow
   _DB_HOST: 10.92.64.2
-  _DB_PORT: 5432
+  _DB_PORT: "5432"
   _DB_USER: sys-speaker-id
   _DB_PASS: 8cf56c5e-7057-423f-a7a8-1d32f316faf3
   _DB_NAME: db_speaker_id
