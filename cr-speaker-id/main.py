@@ -29,14 +29,14 @@ async def get_speaker_ids(webhook: WebhookRequest):
     with Session() as session:
         account_ids = Phone.get_account_ids(session, phone)
         if not account_ids:
-            response.add_text_response(f"AccountError: No account was found for {phone}.")
+            response.add_text_response(f"No account was found for: {phone}.")
             return response.to_dict()
         speaker_ids = SpeakerId.get_speaker_ids(session, account_ids)
         if not speaker_ids:
-            response.add_text_response("SpeakerIderror: No speakerIds were found.")
+            response.add_text_response(f"No speaker IDs were found for: {phone}.")
             return response.to_dict()
         else:
-            response.add_text_response("SpeakerIds found!  Let's move on...")
+            response.add_text_response("Speaker IDs found!  Let's move on...")
             response = response.to_dict()
             session_params = {'sessionInfo': {
                 'parameters': {
