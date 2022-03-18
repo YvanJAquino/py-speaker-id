@@ -2,7 +2,7 @@ import os
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from modules.sql_models import create_tables
+from modules.sql_models import create_tables, drop_tables
 
 # Reserved for database configuration
 DB_HOST = os.environ.get("DB_HOST")
