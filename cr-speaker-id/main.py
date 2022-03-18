@@ -22,6 +22,23 @@ Session = sessionmaker(engine)
 
 app = FastAPI()
 
+@app.post("/default")
+async def default(webhook: WebhookRequest):
+    response = WebhookResponse()
+    phone = phone = webhook.payload['telephony']['caller_id']
+    msg = f"Your phone number is {phone}. "
+    response.add_text_response(phone)
+    response = response.to_dict()
+    session_params = {'sessionInfo': {
+                'parameters': {
+                    'caller_id': phone
+                    }
+                }
+            }
+    response.update(session_params)
+    return response
+
+
 @app.post("/get-speaker-ids")
 async def get_speaker_ids(webhook: WebhookRequest):
     response = WebhookResponse()
