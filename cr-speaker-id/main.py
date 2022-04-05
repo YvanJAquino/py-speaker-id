@@ -25,9 +25,9 @@ app = FastAPI()
 @app.post("/default")
 async def default(webhook: WebhookRequest):
     response = WebhookResponse()
-    phone = phone = webhook.payload['telephony']['caller_id']
+    phone = webhook.payload['telephony']['caller_id']
     msg = f"Your phone number is {phone}. "
-    response.add_text_response(phone)
+    response.add_text_response(msg)
     response = response.to_dict()
     session_params = {'sessionInfo': {
                 'parameters': {
@@ -88,7 +88,7 @@ async def register_speaker_ids(webhook: WebhookRequest):
         response.update(session_params)
         return response
 
-@app.post("verify-pin")
+@app.post("/verify-pin")
 async def verify_pin(webhook: WebhookRequest):
     response = WebhookResponse()
     phone = webhook.payload['telephony']['caller_id']
