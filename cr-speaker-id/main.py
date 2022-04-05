@@ -76,6 +76,7 @@ async def register_speaker_ids(webhook: WebhookRequest):
             return response.to_dict()
         account_id = account_ids[0]
         session.add(SpeakerId(gcp_resource_name=new_speaker_id, account_id=account_id))
+        session.commit()
         response.add_text_response("A new speaker ID has been registered.")
         response = response.to_dict()
         session_params = {'sessionInfo': {
