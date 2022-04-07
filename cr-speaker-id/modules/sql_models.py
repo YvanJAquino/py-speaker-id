@@ -54,7 +54,7 @@ class SpeakerId(Base):
         rows = list(
             session
                 .query(SpeakerId.gcp_resource_name)
-                .filter(SpeakerId.account_id.in_(account_ids))
+                .filter(SpeakerId.account_id.in_(acco  unt_ids))
         )
         return [row[0] for row in rows]
 

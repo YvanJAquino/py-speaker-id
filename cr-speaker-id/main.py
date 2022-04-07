@@ -26,7 +26,7 @@ app = FastAPI()
 async def default(webhook: WebhookRequest):
     response = WebhookResponse()
     phone = webhook.payload['telephony']['caller_id']
-    msg = f"Your phone number is {phone}. "
+    msg = "We found you in our records. "
     response.add_text_response(msg)
     response = response.to_dict()
     session_params = {'sessionInfo': {
